@@ -1,0 +1,21 @@
+employee_id,name,email,age,department,salary,start_date
+1001,Alice Johnson,alice.johnson@corp.com,34,Engineering,95000,2019-03-15
+1002,Bob Smith,bob.smith@corp.com,29,Marketing,68000,2021-07-01
+1003,Carol White,carol.white[at]corp.com,41,Engineering,102000,2017-11-20
+1004,David Brown,david.brown@corp.com,-5,Sales,54000,2022-01-10
+1005,Eve Davis,eve.davis@corp.com,thirty,Finance,71000,2020-05-30
+1006,Frank Miller,frank.miller@corp.com,52,Engineering,,2015-09-12
+1007,Grace Lee,grace.lee@corp.com,38,Marketing,88000,2018-06-25
+1008,,henry.wilson@corp.com,45,Sales,63000,2016-02-14
+1009,Ivy Chen,ivy.chen@corp.com,27,Engineering,79000,2023-04-01
+1010,Jack Taylor,jack.taylornocorp.com,33,Finance,72000,2021-10-18
+1011,Karen Moore,karen.moore@corp.com,205,Marketing,69000,2019-08-22
+1012,Leo Martinez,leo.martinez@corp.com,31,Engineering,91000,15-03-2020
+1013,Mia Anderson,mia.anderson@corp.com,36,Sales,-58000,2022-12-05
+1014,Noah Thomas,noah.thomas@corp.com,48,Finance,105000,2014-07-19
+1015,Olivia Jackson,olivia.jackson@corp.com,,Engineering,84000,2020-11-11
+1016,Peter Harris,peter.harris@corp.com,42,Marketing,76000,2017-03-28
+1017,Quinn Clark,quinn.clark@corp.com,25,Sales,51000,notadate
+1018,Rachel Young,rachel.young@corp.com,39,Engineering,97000,2018-09-03
+1019,Sam King,sam.king@corp,44,Finance,88000,2016-05-16
+1020,Tina Scott,tina.scott@corp.com,30,Marketing,65000,2021-02-27

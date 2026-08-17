@@ -1,0 +1,12 @@
+paths:
+  /items/{id}:
+    get:
+      responses:
+        '200':
+          description: The item was found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '404':
+          description: No item with that ID exists

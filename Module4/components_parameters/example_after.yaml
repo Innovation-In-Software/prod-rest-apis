@@ -1,0 +1,23 @@
+components:
+  parameters:
+    ItemId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+
+paths:
+  /items/{id}:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/ItemId'
+      responses:
+        '200':
+          description: The requested item
+    delete:
+      parameters:
+        - $ref: '#/components/parameters/ItemId'
+      responses:
+        '204':
+          description: Item deleted

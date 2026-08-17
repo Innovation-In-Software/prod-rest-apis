@@ -1,0 +1,45 @@
+paths:
+  /items/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integerpaths:
+  /items/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The requested item
+    delete:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Item deleted
+      responses:
+        '200':
+          description: The requested item
+    delete:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Item deleted
+
+The same four-line parameter block appears twice—once under get, once under delete. On a real API with a dozen endpoints that take an item ID, you'd repeat it a dozen times, and changing the type from integer to string would mean editing every copy and hoping you didn't miss one. That repetition is exactly what the components/parameters version eliminates.

@@ -1,0 +1,30 @@
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: number
+        in_stock:
+          type: boolean
+      required:
+        - name
+        - price
+
+paths:
+  /items:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        '201':
+          description: Item created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'

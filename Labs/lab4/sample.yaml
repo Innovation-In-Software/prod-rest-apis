@@ -1,0 +1,105 @@
+openapi: 3.1.0
+
+# [STEP 1] Change the title from "Books API" to "Loan Applications API"
+info:
+  title: Books API
+  version: 1.0.0
+
+paths:
+  # [STEP 2] Change /books to /loans
+  /books:
+    get:
+      # [STEP 2] Update the summary to talk about loans instead of books
+      summary: List all books
+      operationId: list_books
+      parameters:
+        # [STEP 3] Rename the "availability" filter to "status"
+        #          and change its allowed values to pending, approved, denied
+        - name: availability
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - available
+              - checked_out
+      responses:
+        '200':
+          description: A list of books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  # [STEP 6] Rename Book to LoanApplication (1 of 3)
+                  $ref: '#/components/schemas/Book'
+    post:
+      # [STEP 2] Update the summary to talk about loans instead of books
+      summary: Create a new book
+      operationId: create_book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              # [STEP 6] Rename Book to LoanApplication (2 of 3)
+              $ref: '#/components/schemas/Book'
+      responses:
+        # [STEP 5] Confirm 201 is present — "created successfully"
+        '201':
+          description: The book was created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        # [STEP 5] Confirm 422 is present — "you sent something invalid"
+        '422':
+          description: Validation error
+
+  # [STEP 2] Change /books/{book_id} to /loans/{loan_id}
+  /books/{book_id}:
+    get:
+      # [STEP 2] Update the summary to talk about loans instead of books
+      summary: Get one book by ID
+      operationId: get_book
+      parameters:
+        # [STEP 4] Rename book_id to loan_id — leave the type as integer
+        - name: book_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The requested book
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        # [STEP 5] Confirm 404 is present — "not found"
+        '404':
+          description: No book with that ID exists
+
+components:
+  schemas:
+    # [STEP 6] Rename Book to LoanApplication (3 of 3)
+    Book:
+      type: object
+      # [STEP 7] Set the required fields: applicant_name, amount, term_months
+      required:
+        - title
+        - author
+      properties:
+        # [STEP 8] Rename title -> applicant_name
+        title:
+          type: string
+        # [STEP 8] Rename author -> amount (and change type to number)
+        author:
+          type: string
+        # [STEP 8] Rename copies -> term_months
+        copies:
+          type: integer
+        # [STEP 8] Rename availability -> status, default "pending"
+        availability:
+          type: string
+          default: available
