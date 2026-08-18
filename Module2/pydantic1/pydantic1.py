@@ -7,5 +7,5 @@ class User(BaseModel):
 	email: str
 
 
-user = User(name="Ada", age=30, email="ada@example.com")
+user = User(name="Ada", age="invalid", email="ada@example.com")
 print(user)

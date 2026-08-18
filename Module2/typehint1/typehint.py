@@ -1,8 +1,8 @@
 # no hint — just a label
 age = 30
 
-# hinted — 'age is an int'
-age: int = 30
+# hinted — 'age is an int' FYI
+age: int = "hubba bubba"
 name: str = "Ada"
 
 print(f"{name} is {age} years old.")

@@ -12,6 +12,6 @@ app = FastAPI(
 )
 
 
-@app.get('/items', response_model=None)
-def get_items() -> None:
-    pass
+@app.get('/items')
+def get_items():
+    return [{"id": 1, "name": "widget"}]

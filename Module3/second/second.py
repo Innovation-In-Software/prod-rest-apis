@@ -6,6 +6,7 @@ app = FastAPI()
 # Pydantic model — defines the shape of an Item
 class Item(BaseModel):
     name: str
+    vendor: str
     price: float
     in_stock: bool = True        
 
@@ -13,7 +14,7 @@ class Item(BaseModel):
 items: list[Item] = []
 
 # GET — return all items
-@app.get("/items")
+@app.get("/items")  # abstracting from the plumbing
 def list_items():
     return items
 

@@ -1,0 +1,23 @@
+
+
+# 1. Declare it on the decorator — applies to the normal success return
+@app.post("/items", response_model=Item, status_code=201)
+def create_item(item: ItemCreate) -> Item:
+    new_item = Item(id=uuid4(), **item.model_dump())
+    return new_item          # FastAPI sends this back with status 201
+
+# 2. Or set it on a response object directly
+from fastapi import Response
+
+@app.post("/items")
+def create_item(item: ItemCreate, response: Response) -> Item:
+    response.status_code = 201
+    return new_item
+python
+
+# 3. Or use the named constant instead of the magic number (clearer)
+from fastapi import status
+
+@app.post("/items", status_code=status.HTTP_201_CREATED)
+def create_item(item: ItemCreate) -> Item:
+    return new_item
