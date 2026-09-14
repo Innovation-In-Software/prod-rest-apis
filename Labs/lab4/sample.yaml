@@ -1,20 +1,34 @@
-openapi: 3.1.0
+openapi: 3.0.3
 
-# [STEP 1] Change the title from "Books API" to "Loan Applications API"
+# ============================================================================
+#  STARTER FILE — Books API  ->  Loans API
+# ============================================================================
+#  This file currently describes a fully working "Books" API.
+#  Your job: turn it into a "Loans" API by working through the [STEP N]
+#  comments in order. You are changing WORDS, not STRUCTURE — the shape of
+#  the file stays exactly the same.
+#
+#  Save often. Don't panic at the amount of text — you only touch the
+#  highlighted [STEP N] spots.
+# ============================================================================
+
 info:
+  # [STEP 1] — Rename the API title from "Books API" to "Loans API"
   title: Books API
+  description: A simple API for managing books.
   version: 1.0.0
 
 paths:
-  # [STEP 2] Change /books to /loans
+
+  # [STEP 2] — Rename the "/books" path (both places below) to "/loans"
   /books:
     get:
-      # [STEP 2] Update the summary to talk about loans instead of books
-      summary: List all books
+      summary: List books
       operationId: list_books
       parameters:
-        # [STEP 3] Rename the "availability" filter to "status"
-        #          and change its allowed values to pending, approved, denied
+        # [STEP 3] — Rename the "availability" filter to "status", and change
+        #            its allowed values to: pending, approved, denied.
+        #            (This is what lets someone list only the approved loans.)
         - name: availability
           in: query
           required: false
@@ -25,45 +39,45 @@ paths:
               - checked_out
       responses:
         '200':
-          description: A list of books
+          description: A list of books.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  # [STEP 6] Rename Book to LoanApplication (1 of 3)
+                  # [STEP 6] — Rename "Book" to "LoanApplication" (place 1 of 3)
                   $ref: '#/components/schemas/Book'
     post:
-      # [STEP 2] Update the summary to talk about loans instead of books
-      summary: Create a new book
+      summary: Create a book
       operationId: create_book
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              # [STEP 6] Rename Book to LoanApplication (2 of 3)
+              # [STEP 6] — Rename "Book" to "LoanApplication" (place 2 of 3)
               $ref: '#/components/schemas/Book'
       responses:
-        # [STEP 5] Confirm 201 is present — "created successfully"
+        # [STEP 5] — Confirm the response codes below are present and worded
+        #            for loans: 201, 404, 422. You don't add them — just check.
         '201':
-          description: The book was created
+          description: The loan was created successfully.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Book'
-        # [STEP 5] Confirm 422 is present — "you sent something invalid"
         '422':
-          description: Validation error
+          description: You sent something invalid (e.g. text where a number belongs).
 
-  # [STEP 2] Change /books/{book_id} to /loans/{loan_id}
+  # [STEP 2] — Rename this "/books/{book_id}" path to "/loans/{loan_id}"
   /books/{book_id}:
     get:
-      # [STEP 2] Update the summary to talk about loans instead of books
-      summary: Get one book by ID
+      summary: Get one book
       operationId: get_book
       parameters:
-        # [STEP 4] Rename book_id to loan_id — leave the type as integer
+        # [STEP 4] — Rename "book_id" to "loan_id" (the unique number used to
+        #            look up one specific loan). Leave the type as integer —
+        #            you're only changing the name.
         - name: book_id
           in: path
           required: true
@@ -71,35 +85,51 @@ paths:
             type: integer
       responses:
         '200':
-          description: The requested book
+          description: One loan.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Book'
-        # [STEP 5] Confirm 404 is present — "not found"
+        # [STEP 5] — 404 means "not found": someone asked for an ID that
+        #            doesn't exist. Confirm it's present.
         '404':
-          description: No book with that ID exists
+          description: Loan not found.
 
 components:
   schemas:
-    # [STEP 6] Rename Book to LoanApplication (3 of 3)
+
+    # [STEP 6] — Rename "Book" to "LoanApplication" (place 3 of 3).
+    #            The name appears in THREE places total — change all three.
     Book:
       type: object
-      # [STEP 7] Set the required fields: applicant_name, amount, term_months
+
+      # [STEP 7] — Set the required fields (the ones that can't be left blank):
+      #            applicant_name, amount, term_months
       required:
         - title
         - author
+
       properties:
-        # [STEP 8] Rename title -> applicant_name
+
+        # [STEP 8] — Rename each field to its loan version:
+        #            title -> applicant_name
         title:
           type: string
-        # [STEP 8] Rename author -> amount (and change type to number)
+
+        # [STEP 8] — author -> amount, and change its type to "number"
+        #            (money isn't a word).
         author:
           type: string
-        # [STEP 8] Rename copies -> term_months
+
+        # [STEP 8] — copies -> term_months
         copies:
           type: integer
-        # [STEP 8] Rename availability -> status, default "pending"
+
+        # [STEP 8] — availability -> status, with the default set to pending.
+        #            New loans should start as pending automatically.
         availability:
           type: string
+          enum:
+            - available
+            - checked_out
           default: available

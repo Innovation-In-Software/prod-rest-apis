@@ -22,6 +22,9 @@ for c in cities:
         city = c
         break
 
+#if city == None:
+#    raise SystemExit("City not found. Please check the number and try again.")
+
 # ----- GIVEN CODE (do not change) -----
 # Build the API URL using the chosen city's coordinates.
 url = (f"https://api.open-meteo.com/v1/forecast"
