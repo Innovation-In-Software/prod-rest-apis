@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: Loans API
+  description: A simple API for managing loan applications.
+  version: 1.0.0
+paths:
+  /loans:
+    get:
+      summary: List loan applications
+      operationId: list_loans
+      parameters:
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - pending
+              - approved
+              - denied
+      responses:
+        '200':
+          description: A list of loan applications.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoanApplication'
+    post:
+      summary: Create a loan application
+      operationId: create_loan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoanApplication'
+      responses:
+        '201':
+          description: The loan was created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoanApplication'
+        '422':
+          description: You sent something invalid (e.g. text where a number belongs).
+  /loans/{loan_id}:
+    get:
+      summary: Get one loan application
+      operationId: get_loan
+      parameters:
+        - name: loan_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: One loan application.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoanApplication'
+        '404':
+          description: Loan not found.
+components:
+  schemas:
+    LoanApplication:
+      type: object
+      required:
+        - applicant_name
+        - amount
+        - term_months
+      properties:
+        applicant_name:
+          type: string
+        amount:
+          type: number
+        term_months:
+          type: integer
+        status:
+          type: string
+          enum:
+            - pending
+            - approved
+            - denied
+          default: pending

@@ -6,9 +6,9 @@ app = FastAPI()
 @app.middleware("http")
 async def log_timing(request: Request, 
                      call_next):
-    start = time.time()  #before the request is processed
-    response = await call_next(request)  #root runs
-    duration = time.time() - start #after root is finished
+    start = time.time()  
+    response = await call_next(request)  
+    duration = time.time()
     print(
         f"{request.method} {request.url.path} "
         f"took {duration:.3f}s"
@@ -17,4 +17,9 @@ async def log_timing(request: Request,
 
 @app.get("/")
 async def root():
+    return {"message": "hello"}
+
+
+@app.get("/")
+async def cool():
     return {"message": "hello"}

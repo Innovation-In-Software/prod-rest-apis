@@ -11,4 +11,4 @@ print(User(name="Bob", age="25"))
 try:
 	print(User(name="Carol", age="hello"))
 except ValidationError as error:
-	print("something happened!  call Juan Carlos.")
+	print(error)

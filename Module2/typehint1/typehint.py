@@ -2,7 +2,7 @@
 age = 30
 
 # hinted — 'age is an int' FYI
-age: int = "hubba bubba"
+age: int = "hello"
 name: str = "Ada"
 
 print(f"{name} is {age} years old.")
@@ -11,3 +11,4 @@ print(f"{name} is {age} years old.")
 
 def read_item(item_id: int):
     return {"id": item_id}
+

@@ -16,7 +16,7 @@ async def hello_v1(response: Response):
     # Deprecation: true  -> "this endpoint is deprecated"
     # Sunset: <date>      -> "it will be removed on this date"
     # Link                -> points clients to the replacement
-    response.headers["Deprecation"] = "true"
+    response.headers["Deprecation"] = "@1735689600"
     response.headers["Sunset"] = format_datetime(SUNSET, usegmt=True)
     response.headers["Link"] = '</v2/hello>; rel="successor-version"'
     return {"message": "Hello from v1", "version": "v1"}

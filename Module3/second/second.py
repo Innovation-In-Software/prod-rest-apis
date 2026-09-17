@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-app = FastAPI()
+app = FastAPI(title="Donis Greatest API")
 
 # Pydantic model — defines the shape of an Item
 class Item(BaseModel):

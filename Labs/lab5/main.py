@@ -35,7 +35,7 @@ class TimeReading(BaseModel):
 
 
 @app.get("/now")
-async def get_now():
+def get_now():
     reading = TimeReading(
         timestamp=datetime.now(timezone.utc).isoformat(),
         token="super-secret-do-not-leak",
@@ -52,7 +52,7 @@ async def get_now():
 #   - On the way OUT: attach the total as an "X-Request-Count" header.
 #   - Return the response.
 # ---------------------------------------------------------------------------
-@app.middleware("http")
-async def count_requests(request, call_next):
-    global request_count
-    # your code here
+# @app.middleware("http")
+# def count_requests(request, call_next):
+#     global request_count
+#     # your code here
