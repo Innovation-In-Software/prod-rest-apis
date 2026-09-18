@@ -13,7 +13,14 @@ async def log_requests(request: Request, call_next):
     response = await call_next(request)
     return response
 
-
 @app.get("/")
 def hello():
     return {"message": "Hello"}
+
+@app.get("/answer")
+def theanswer():
+    return {"message": "42"}
+
+@app.get("/football")
+def bestfootballteam():
+    return {"message": "Cowboys"}

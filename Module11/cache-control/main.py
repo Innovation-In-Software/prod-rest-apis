@@ -1,6 +1,3 @@
-Here's a complete, runnable FastAPI application demonstrating Cache-Control across the common scenarios. I'll give you the full file, then walk through what each part teaches.
-
-python
 from fastapi import FastAPI, Response, Request
 from datetime import datetime, timezone
 
