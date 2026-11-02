@@ -1,0 +1,6 @@
+INFO:root:SETUP: creating client
+INFO:httpx:HTTP Request: POST http://testserver/items/widget "HTTP/1.1 200 OK"
+INFO:root:TEARDOWN: clearing data
+INFO:root:SETUP: creating client
+INFO:httpx:HTTP Request: GET http://testserver/items/widget "HTTP/1.1 200 OK"
+INFO:root:TEARDOWN: clearing data

@@ -1,6 +1,6 @@
 from fastapi import FastAPI         # import the framework
  
-app = FastAPI(    title="My API",
+app = FastAPI(title="My API",
     description="Does useful things",
     version="1.0.0",
 )                     # creates the application object
@@ -12,7 +12,3 @@ def read_root():
 @app.get("/greet/{name}")           # {name} is a path parameter
 def greet(name: str):               # typed & validated as str
     return {"message": f"Hello, {name}!"}   # returns JSON
-
-@app.put("/update/{name}")
-def update_name(name: str):
-    return {"message": f"Updated name to {name}."}

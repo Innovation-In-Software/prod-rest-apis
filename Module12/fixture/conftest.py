@@ -5,12 +5,12 @@ import pytest
 from fastapi.testclient import TestClient
 from main import app, items
 
-logger = logging.getLogger(__name__)
+logging.basicConfig(filename="test.log", level=logging.INFO)
 
 @pytest.fixture
 def client():
-    logger.info("SETUP: creating client")     # runs before each test
+    logging.info("SETUP: creating client")     # runs before each test
     with TestClient(app) as c:
-        yield c
-    logger.info("TEARDOWN: clearing data")     # runs after each test
+        yield c                                # yield runs the unit test
+    logging.info("TEARDOWN: clearing data")     # runs after each test
     items.clear()

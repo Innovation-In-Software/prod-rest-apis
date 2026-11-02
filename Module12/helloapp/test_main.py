@@ -3,7 +3,7 @@ from fastapi.testclient import TestClient
 from main import app
 
 
-client = TestClient(app)
+client = TestClient(app) #proxy
 
 
 def test_read_root_returns_ok() -> None:

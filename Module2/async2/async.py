@@ -6,6 +6,7 @@ async def make_coffee():
 	print("Start coffee")
 	print("Coffee brewing (3 seconds)...")
 	await asyncio.sleep(3)
+	#time.sleep(3)
 	print("Coffee done")
 
 
